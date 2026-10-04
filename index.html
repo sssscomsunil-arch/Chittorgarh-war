@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Chittorgarh Battle</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="game">
+
+    <!-- SKY -->
+    <div class="sky"></div>
+
+    <!-- FORT -->
+    <div class="fort">
+
+        <div class="fort-wall"></div>
+
+        <div class="palace palace1">
+            <div class="roof"></div>
+            <span>MAHAL</span>
+        </div>
+
+        <div class="palace palace2">
+            <div class="roof"></div>
+            <span>RAJ MAHAL</span>
+        </div>
+
+        <div class="palace palace3">
+            <div class="roof"></div>
+            <span>PALACE</span>
+        </div>
+
+        <div class="tower tower1"></div>
+        <div class="tower tower2"></div>
+
+        <div class="gate">
+            <div class="gateDoor"></div>
+        </div>
+
+        <div class="temple">
+            🛕
+        </div>
+
+        <div class="water"></div>
+
+    </div>
+
+    <!-- TREES -->
+    <div class="tree tree1"></div>
+    <div class="tree tree2"></div>
+    <div class="tree tree3"></div>
+
+    <!-- CAR -->
+    <div id="car" class="car">
+        🚙
+    </div>
+
+    <!-- BOTS -->
+    <div class="bot bot1">
+        <div class="botHead"></div>
+        <div class="botBody"></div>
+        <div class="botGun"></div>
+    </div>
+
+    <div class="bot bot2">
+        <div class="botHead"></div>
+        <div class="botBody"></div>
+        <div class="botGun"></div>
+    </div>
+
+    <div class="bot bot3">
+        <div class="botHead"></div>
+        <div class="botBody"></div>
+        <div class="botGun"></div>
+    </div>
+
+    <div class="bot bot4">
+        <div class="botHead"></div>
+        <div class="botBody"></div>
+        <div class="botGun"></div>
+    </div>
+
+    <!-- PLAYER -->
+    <div id="player">
+        <div class="playerHead"></div>
+        <div class="playerBody"></div>
+        <div class="playerGun"></div>
+    </div>
+
+    <!-- HUD -->
+    <div class="hud">
+
+        <div class="hudBox">
+            ❤️ HP: <b id="hp">500</b>
+        </div>
+
+        <div class="hudBox">
+            🤖 BOTS: <b id="bots">4</b>
+        </div>
+
+        <div class="hudBox">
+            🔫 AMMO: <b id="ammo">30</b>
+        </div>
+
+    </div>
+
+    <div class="location">
+        📍 CHITTORGARH FORT
+    </div>
+
+    <!-- AIM -->
+    <div id="crosshair">
+        +
+    </div>
+
+    <!-- FIRE -->
+    <button id="fireBtn">
+        🔥
+    </button>
+
+    <!-- MOBILE CONTROLS -->
+    <div class="controls">
+
+        <button id="up">▲</button>
+
+        <button id="left">◀</button>
+
+        <button id="down">▼</button>
+
+        <button id="right">▶</button>
+
+    </div>
+
+    <div id="message">
+        Mission: Fort ke andar sabhi bots ko eliminate karo
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
