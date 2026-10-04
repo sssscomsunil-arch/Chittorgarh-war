@@ -3,147 +3,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 
-<title>Chittorgarh Battle</title>
-<link rel="stylesheet" href="style.css">
+<title>Battle Royale Chittorgarh</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  user-select:none;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background:#111;
+  font-family:Arial,sans-serif;
+}
+
+#game{
+  width:100%;
+  height:100%;
+  position:relative;
+}
+
+canvas{
+  display:block;
+}
+
+#hud{
+  position:absolute;
+  top:12px;
+  left:12px;
+  right:12px;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  pointer-events:none;
+}
+
+.box{
+  background:rgba(0,0,0,.72);
+  color:white;
+  padding:10px 13px;
+  border-radius:8px;
+  font-weight:bold;
+  margin:3px;
+}
+
+#title{
+  position:absolute;
+  top:75px;
+  left:15px;
+  color:white;
+  background:rgba(0,0,0,.6);
+  padding:10px 15px;
+  border-radius:8px;
+  z-index:10;
+}
+
+#crosshair{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  color:white;
+  font-size:32px;
+  font-weight:bold;
+  z-index:10;
+  text-shadow:0 2px 5px #000;
+}
+
+#fire{
+  position:absolute;
+  right:25px;
+  bottom:120px;
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  border:3px solid white;
+  background:#9b2226;
+  color:white;
+  font-size:30px;
+  z-index:20;
+}
+
+#joystick{
+  position:absolute;
+  left:25px;
+  bottom:25px;
+  width:145px;
+  height:145px;
+  border-radius:50%;
+  background:rgba(0,0,0,.35);
+  border:2px solid rgba(255,255,255,.5);
+  z-index:20;
+}
+
+#stick{
+  position:absolute;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:rgba(255,255,255,.55);
+  left:43px;
+  top:43px;
+}
+
+#message{
+  position:absolute;
+  left:50%;
+  bottom:20px;
+  transform:translateX(-50%);
+  color:white;
+  background:rgba(0,0,0,.65);
+  padding:8px 14px;
+  border-radius:8px;
+  z-index:15;
+  font-size:12px;
+  white-space:nowrap;
+}
+
+#loading{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+  background:#18251b;
+  z-index:100;
+  font-size:20px;
+}
+
+@media(max-width:600px){
+  #hud{
+    font-size:11px;
+  }
+
+  .box{
+    padding:8px;
+  }
+
+  #title{
+    font-size:13px;
+  }
+}
+</style>
 </head>
 
 <body>
 
 <div id="game">
 
-    <!-- SKY -->
-    <div class="sky"></div>
-
-    <!-- FORT -->
-    <div class="fort">
-
-        <div class="fort-wall"></div>
-
-        <div class="palace palace1">
-            <div class="roof"></div>
-            <span>MAHAL</span>
-        </div>
-
-        <div class="palace palace2">
-            <div class="roof"></div>
-            <span>RAJ MAHAL</span>
-        </div>
-
-        <div class="palace palace3">
-            <div class="roof"></div>
-            <span>PALACE</span>
-        </div>
-
-        <div class="tower tower1"></div>
-        <div class="tower tower2"></div>
-
-        <div class="gate">
-            <div class="gateDoor"></div>
-        </div>
-
-        <div class="temple">
-            🛕
-        </div>
-
-        <div class="water"></div>
-
-    </div>
-
-    <!-- TREES -->
-    <div class="tree tree1"></div>
-    <div class="tree tree2"></div>
-    <div class="tree tree3"></div>
-
-    <!-- CAR -->
-    <div id="car" class="car">
-        🚙
-    </div>
-
-    <!-- BOTS -->
-    <div class="bot bot1">
-        <div class="botHead"></div>
-        <div class="botBody"></div>
-        <div class="botGun"></div>
-    </div>
-
-    <div class="bot bot2">
-        <div class="botHead"></div>
-        <div class="botBody"></div>
-        <div class="botGun"></div>
-    </div>
-
-    <div class="bot bot3">
-        <div class="botHead"></div>
-        <div class="botBody"></div>
-        <div class="botGun"></div>
-    </div>
-
-    <div class="bot bot4">
-        <div class="botHead"></div>
-        <div class="botBody"></div>
-        <div class="botGun"></div>
-    </div>
-
-    <!-- PLAYER -->
-    <div id="player">
-        <div class="playerHead"></div>
-        <div class="playerBody"></div>
-        <div class="playerGun"></div>
-    </div>
-
-    <!-- HUD -->
-    <div class="hud">
-
-        <div class="hudBox">
-            ❤️ HP: <b id="hp">500</b>
-        </div>
-
-        <div class="hudBox">
-            🤖 BOTS: <b id="bots">4</b>
-        </div>
-
-        <div class="hudBox">
-            🔫 AMMO: <b id="ammo">30</b>
-        </div>
-
-    </div>
-
-    <div class="location">
-        📍 CHITTORGARH FORT
-    </div>
-
-    <!-- AIM -->
-    <div id="crosshair">
-        +
-    </div>
-
-    <!-- FIRE -->
-    <button id="fireBtn">
-        🔥
-    </button>
-
-    <!-- MOBILE CONTROLS -->
-    <div class="controls">
-
-        <button id="up">▲</button>
-
-        <button id="left">◀</button>
-
-        <button id="down">▼</button>
-
-        <button id="right">▶</button>
-
-    </div>
-
-    <div id="message">
-        Mission: Fort ke andar sabhi bots ko eliminate karo
-    </div>
-
+<div id="loading">
+  🏰 Chittorgarh Battle Loading...
 </div>
 
-<script src="script.js"></script>
-
-</body>
-</html>
+<div id="hud">
+  <div class="box">❤️ HP: <span id="hp">500</span></div>
+  <div class="box">👥 ALIVE: <span id="alive">20</span></div>
+  <div class="box">🎯 KILL: <span id="kills">0</span></div>
+  <div class="box">🔫 <span id="ammo">30</span>/120
